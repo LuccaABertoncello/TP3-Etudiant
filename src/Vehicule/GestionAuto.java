@@ -6,30 +6,39 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GestionAuto {
-public static String  pfichier="Autos.bin";
+    public static String pfichier = "Autos.bin";
 
 
     public static void ecrireAutoBinaire(ArrayList<Auto> ListeA) {
 
-
-
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(
+                    new BufferedOutputStream(
+                            new FileOutputStream("src/working/" + pfichier)));
+            oos.writeObject(ListeA);
+            oos.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichier ne pas été trouvé");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("problème lors de la lecture du fichier");
+            throw new RuntimeException(e);
+        }
     }
 
     public static ArrayList<Auto> lireAutosFichier(String pFichier, int t) {
 
-        ImageIcon icon=
+        ImageIcon icon =
 
-            JOptionPane.showMessageDialog(null,
-                    "Erreur ouverture du fichier",
-                    "Erreur E/S", JOptionPane.ERROR_MESSAGE,icon);
+                JOptionPane.showMessageDialog(null,
+                        "Erreur ouverture du fichier",
+                        "Erreur E/S", JOptionPane.ERROR_MESSAGE, icon);
     }
 
-    public static int  compterAutosFichier(String pFichier) {
+    public static int compterAutosFichier(String pFichier) {
 
         return 0;
     }
-
-
 
 
     /**
@@ -37,8 +46,7 @@ public static String  pfichier="Autos.bin";
      * fonction du km des Autos.
      *
      */
-    public static void trierParKm(ArrayList pCol)
-    {
+    public static void trierParKm(ArrayList pCol) {
 
     }
 
@@ -62,12 +70,10 @@ public static String  pfichier="Autos.bin";
      * peut-étre vous aider.</b>
      *
      * @param pMarque la marque à rechercher
-     * @param pCol la liste d'Autos
-     *
+     * @param pCol    la liste d'Autos
      * @return int[], un tableau des indices des Autos correspondants ou "null"
      */
-       public static int[] rechercherMarque(String pMarque, ArrayList pCol)
-    {
+    public static int[] rechercherMarque(String pMarque, ArrayList pCol) {
 
     }
 

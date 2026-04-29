@@ -27,14 +27,19 @@ public class Camion extends Vehicule {
      */
     public Camion(String plaque, String marque, int km, int prix, int hauteur) {
         super(plaque, marque, km, prix);
-        if (hauteur < HAUTEUR_MIN || hauteur > HAUTEUR_MAX){
-            throw new HauteurHorsLimiteException("Hauteur invalide de " + hauteur + " métres");
-        } else {
+        if (setHauteur(hauteur)){
             this.hauteur = hauteur;
+        } else {
+            throw new HauteurHorsLimiteException("Hauteur invalide de " + hauteur + " métres");
         }
-
     }
 
+    public boolean setHauteur(int hauteur) {
+        if (hauteur < HAUTEUR_MIN || hauteur > HAUTEUR_MAX){
+            this.hauteur = hauteur;
+        }
+        return hauteur < HAUTEUR_MIN || hauteur > HAUTEUR_MAX;
+    }
 
     public int gethauteur() {
         return hauteur;
