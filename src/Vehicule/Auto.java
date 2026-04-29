@@ -2,21 +2,21 @@ package Vehicule;
 
 /**
  * Definition de la classe Auto. Attributs et methodes
- * 
+ *
  */
-public class Auto extends Vehicule
-{
+public class Auto extends Vehicule {
 
-
+    public final int nPortes;
     /**
      * Constructeur avec paramétres
      *
-     * @param pplaque la plaque du Vehicule
-     * @param pmarque le marque du Vehicule
-     * @param pkm     km du Vehicule
-     * @param pprix   le prix du Vehicule
+     * @param plaque la plaque du Vehicule
+     * @param marque le marque du Vehicule
+     * @param km     km du Vehicule
+     * @param prix   le prix du Vehicule
      */
-    public Auto(String pplaque, String pmarque, int pkm, float pprix) {
-        super(pplaque, pmarque, pkm, pprix);
+    public Auto(String plaque, String marque, int km, float prix, int nPortes) {
+        super(plaque, marque, km, prix);
+        this.nPortes = nPortes;
     }
 }

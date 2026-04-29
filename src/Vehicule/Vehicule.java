@@ -1,6 +1,6 @@
 package Vehicule;
 
-public class Vehicule implements Comparable<Vehicule>{
+public class Vehicule implements Comparable<Vehicule> {
     /**
      * La plaque par défaut
      */
@@ -53,7 +53,7 @@ public class Vehicule implements Comparable<Vehicule>{
      * Le marque d'un Vehicule
      */
     private String marque = null;
-   /**
+    /**
      * km d'un Vehicule
      */
     private int km = 10;
@@ -62,21 +62,20 @@ public class Vehicule implements Comparable<Vehicule>{
      * Le prix d'un Vehicule
      */
     private float prix = 0f;
+
     /**
      * Constructeur avec paramétres
      *
-     * @param pplaque la plaque du Vehicule
-     * @param pmarque le marque du Vehicule
-      * @param pkm km du Vehicule
-     * @param pprix le prix du Vehicule
+     * @param plaque la plaque du Vehicule
+     * @param marque le marque du Vehicule
+     * @param km     km du Vehicule
+     * @param prix   le prix du Vehicule
      */
-    public Vehicule(String pplaque, String pmarque,  int pkm, float pprix)
-    {
-        boolean ok = this.setplaque(pplaque) && this.setmarque(pmarque)
-                && this.setkm(pkm)&& this.setprix(pprix);
+    public Vehicule(String plaque, String marque, int km, float prix) {
+        boolean ok = this.setplaque(plaque) && this.setmarque(marque)
+                && this.setkm(km) && this.setprix(prix);
 
-        if (!ok)
-        {
+        if (!ok) {
             setplaque(Vehicule.PLAQUE_PAR_DEFAUT);
             setmarque(Vehicule.MARQUE_PAR_DEFAUT);
             setkm(Vehicule.KM_PAR_DEFAUT);
@@ -89,8 +88,7 @@ public class Vehicule implements Comparable<Vehicule>{
      *
      * @return String, la plaque
      */
-    public String getplaque()
-    {
+    public String getplaque() {
         return plaque;
     }
 
@@ -99,19 +97,19 @@ public class Vehicule implements Comparable<Vehicule>{
      *
      * @return String, le marque
      */
-    public String getmarque()
-    {
+    public String getmarque() {
         return marque;
     }
+
     /**
      * Obtenir les KM du Vehicule
      *
      * @return int, les km
      */
-    public int getkm()
-    {
+    public int getkm() {
         return km;
     }
+
     /**
      * Obtenir le prix du Vehicule
      *
@@ -120,19 +118,17 @@ public class Vehicule implements Comparable<Vehicule>{
     public float getprix() {
         return prix;
     }
+
     /**
      * Mettre à jour la plaque du Vehicule
      *
      * @param pplaque la plaque à mettre à jour
-     *
      * @return boolean, vrai si la plaque a été mise à jour
      */
-    public boolean setplaque(String pplaque)
-    {
+    public boolean setplaque(String pplaque) {
         boolean ok = Vehicule.validerplaque(pplaque);
 
-        if (ok)
-        {
+        if (ok) {
             plaque = pplaque;
         }
 
@@ -143,34 +139,28 @@ public class Vehicule implements Comparable<Vehicule>{
      * Mettre à jour le marque du Vehicule
      *
      * @param pmarque la  marque à mettre à jour
-     *
      * @return boolean, vrai si la marque a été mise à jour
      */
-    public boolean setmarque(String pmarque)
-    {
+    public boolean setmarque(String pmarque) {
         boolean ok = Vehicule.validermarque(pmarque);
 
-        if (ok)
-        {
+        if (ok) {
             marque = pmarque;
         }
 
         return ok;
     }
 
-     /**
+    /**
      * Mettre a jour les km du Vehicule
      *
      * @param pkm les km du vehicule à mettre à jour
-     *
      * @return boolean, vrai si les km ont été mise à jour
      */
-    public boolean setkm(int pkm)
-    {
+    public boolean setkm(int pkm) {
         boolean ok = Vehicule.validerkm(pkm);
 
-        if (ok)
-        {
+        if (ok) {
             km = pkm;
         }
 
@@ -183,12 +173,10 @@ public class Vehicule implements Comparable<Vehicule>{
      * suivies de 3 lettres suivie du car - suivie d'un chiffre.
      *
      * @param pplaque la plaque à valider
-     *
      * @return boolean, vrai si la plaque est valide
      */
-    public static boolean validerplaque(String pplaque)
-    {
-          // Expressions réguliéres
+    public static boolean validerplaque(String pplaque) {
+        // Expressions réguliéres
         return ((pplaque != null) && (pplaque.matches("[A-Z][0-9][0-9][A-Z][A-Z][A-Z][-][0-9]")));
     }
 
@@ -196,92 +184,82 @@ public class Vehicule implements Comparable<Vehicule>{
      * Valider le marque du Vehicule
      *
      * @param pmarque le marque à valider
-     *
      * @return boolean, vrai si la marque est valide
      */
-    public static boolean validermarque(String pmarque)
-    {
+    public static boolean validermarque(String pmarque) {
         return ((pmarque != null)
                 && (pmarque.length() >= Vehicule.LONGUEUR_MARQUE_MIN) && (pmarque
                 .length() <= Vehicule.LONGUEUR_MARQUE_MAX));
     }
+
     /**
      * Valider les km du Vehicule
      *
      * @param pkm les km a valider
-     *
      * @return boolean, vrai si les km sont valides
      */
-    public static boolean validerkm(int pkm)
-    {
+    public static boolean validerkm(int pkm) {
         return (pkm >= Vehicule.KM_MIN);
     }
 
     /**
-    * Mettre à jour le prix de l'Auto
+     * Mettre à jour le prix de l'Auto
      *
      * @param pPrix la valeur du prix à mettre à jour
-     *
      * @return boolean, vrai si la valeur a été mise à jour
      */
-    public boolean setprix(float pPrix)
-    {
+    public boolean setprix(float pPrix) {
         boolean ok = Vehicule.validerprix(pPrix);
 
-        if (ok)
-        {
+        if (ok) {
             prix = pPrix;
         }
 
         return ok;
     }
+
     /**
      * Valider le prix du vehicule
      *
      * @param pValeur le prix a valider
-     *
      * @return boolean, vrai si le prix est valide
      */
-    public static boolean validerprix(float pValeur)
-    {
+    public static boolean validerprix(float pValeur) {
         return (pValeur >= Vehicule.PRIX_MIN);
     }
 
 
-        /**
+    /**
      * Construire une chaine avec les informations du Vehicule
+     *
      * @return String, la chaine construite
      */
 
     @Override
-    public String toString()
-    {
+    public String toString() {
 
         return "plaque: " + getplaque() + "\t\tmarque: " + getmarque() + " km: "
-                + getkm()+ "\t\tprix: " + getprix() +"\t\t" ;
+                + getkm() + "\t\tprix: " + getprix() + "\t\t";
     }
-
 
 
     /**
      * Permet de comparer deux autos en considérant leur km.
-     * @param pVehicule le Vehicule avec lequel il faut comparer le Vehicule courant.
      *
+     * @param v le Vehicule avec lequel il faut comparer le Vehicule courant.
      * @return float, une valeur négative si inférieur, positive si supérieur et 0
-     *         si égale.
+     * si égale.
      */
-    public int compareTo(Vehicule pVehicule)
-    {
+    public int compareTo(Vehicule v) {
         //à compléter
-        return 0;
+        return Integer.compare(this.km, v.km);
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         Vehicule v1 = new Vehicule("A23CDE-1", "marque", 12000, 30);
-        System.out.println(v1.getplaque()+"\n"+
-                v1.getmarque()+"\n"+v1.getkm()+"\n"+v1.getprix());
+        System.out.println(v1.getplaque() + "\n" +
+                v1.getmarque() + "\n" + v1.getkm() + "\n" + v1.getprix());
         Vehicule v2 = new Vehicule("B56DEF-3", "marque", 1400, 35);
         System.out.println(v1.compareTo(v2));
     }

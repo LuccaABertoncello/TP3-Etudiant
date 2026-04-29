@@ -1,6 +1,6 @@
 package Vehicule;
 
-public class Camion  {
+public class Camion extends Vehicule {
     /**
      * hauteur de degagement par defaut
      */
@@ -23,14 +23,17 @@ public class Camion  {
     /**
      * Constructeur avec parametres
      *
-     *
-     * @param phauteur la hauteur du vehicule
+     * @param hauteur la hauteur du vehicule
      */
-    public Camion(String pplaque, String pmarque,  int pkm, int pprix, int phauteur)
-    {
+    public Camion(String plaque, String marque, int km, int prix, int hauteur) {
+        super(plaque, marque, km, prix);
+        if (hauteur < HAUTEUR_MIN || hauteur > HAUTEUR_MAX){
+            throw new HauteurHorsLimiteException("Hauteur invalide de " + hauteur + " métres");
+        } else {
+            this.hauteur = hauteur;
+        }
 
     }
-
 
 
     public int gethauteur() {
@@ -39,11 +42,10 @@ public class Camion  {
 
     @Override
     public String toString() {
-        return "Auto{" +super.toString()+
+        return "Auto{" + super.toString() +
                 "nHAUTEUR=" + gethauteur() +
                 '}';
     }
-
 
 
 }
